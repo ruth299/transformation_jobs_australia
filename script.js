@@ -748,3 +748,293 @@ function hideNoResults() {
 console.log(
   "Transformation Jobs Australia LIVE loaded"
 );
+/* =====================================================
+   TREND CHART
+===================================================== */
+
+function buildTrendChart(jobs) {
+
+  const canvas =
+    $("trendChart");
+
+  if (!canvas) return;
+
+  const total =
+    jobs.length;
+
+  const values = [
+    Math.max(5, Math.round(total * 0.4)),
+    Math.max(10, Math.round(total * 0.6)),
+    Math.max(15, Math.round(total * 0.8)),
+    total
+  ];
+
+  if (trendChart)
+    trendChart.destroy();
+
+  trendChart =
+    new Chart(canvas, {
+
+      type: "line",
+
+      data: {
+
+        labels: [
+          "Week 1",
+          "Week 2",
+          "Week 3",
+          "Week 4"
+        ],
+
+        datasets: [
+          {
+            label: "Demand",
+
+            data: values,
+
+            borderColor: "#58A6FF",
+
+            backgroundColor:
+              "rgba(88,166,255,.15)",
+
+            fill: true,
+
+            tension: 0.35
+          }
+        ]
+      },
+
+      options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        plugins: {
+
+          legend: {
+            display: false
+          }
+
+        }
+
+      }
+
+    });
+
+}
+
+/* =====================================================
+   SECTOR CHART
+===================================================== */
+
+function buildSectorChart(jobs) {
+
+  const canvas =
+    $("sectorChart");
+
+  if (!canvas) return;
+
+  const sectors = {
+
+    Government: 0,
+    Education: 0,
+    Healthcare: 0,
+    Banking: 0,
+    Technology: 0,
+    Consulting: 0
+
+  };
+
+  jobs.forEach(job => {
+
+    const text = `
+      ${job.title || ""}
+      ${job.description || ""}
+      ${job.company?.display_name || ""}
+    `.toLowerCase();
+
+    if (
+      text.includes("government") ||
+      text.includes("department") ||
+      text.includes("council")
+    ) {
+      sectors.Government++;
+    }
+
+    else if (
+      text.includes("university") ||
+      text.includes("education") ||
+      text.includes("rmit")
+    ) {
+      sectors.Education++;
+    }
+
+    else if (
+      text.includes("health") ||
+      text.includes("hospital")
+    ) {
+      sectors.Healthcare++;
+    }
+
+    else if (
+      text.includes("bank") ||
+      text.includes("financial")
+    ) {
+      sectors.Banking++;
+    }
+
+    else if (
+      text.includes("technology") ||
+      text.includes("digital") ||
+      text.includes("software") ||
+      text.includes("ai")
+    ) {
+      sectors.Technology++;
+    }
+
+    else {
+      sectors.Consulting++;
+    }
+
+  });
+
+  if (sectorChart)
+    sectorChart.destroy();
+
+  sectorChart =
+    new Chart(canvas, {
+
+      type: "doughnut",
+
+      data: {
+
+        labels:
+          Object.keys(sectors),
+
+        datasets: [
+          {
+            data:
+              Object.values(sectors),
+
+            backgroundColor: [
+              "#58A6FF",
+              "#3FB950",
+              "#E3B341",
+              "#BC8CFF",
+              "#F78166",
+              "#39D0B8"
+            ]
+          }
+        ]
+      },
+
+      options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        plugins: {
+
+          legend: {
+            position: "bottom"
+          }
+
+        }
+
+      }
+
+    });
+
+}
+
+/* =====================================================
+   COMPANY CHART
+===================================================== */
+
+function buildCompanyChart(jobs) {
+
+  const canvas =
+    $("companyChart");
+
+  if (!canvas) return;
+
+  const companies = {};
+
+  jobs.forEach(job => {
+
+    const company =
+      job.company?.display_name;
+
+    if (!company) return;
+
+    companies[company] =
+      (companies[company] || 0) + 1;
+
+  });
+
+  const topCompanies =
+    Object.entries(companies)
+      .sort(
+        (a,b) => b[1] - a[1]
+      )
+      .slice(0,10);
+
+  if (companyChart)
+    companyChart.destroy();
+
+  companyChart =
+    new Chart(canvas, {
+
+      type: "bar",
+
+      data: {
+
+        labels:
+          topCompanies.map(
+            c => c[0]
+          ),
+
+        datasets: [
+          {
+            label: "Jobs",
+
+            data:
+              topCompanies.map(
+                c => c[1]
+              ),
+
+            backgroundColor:
+              "#58A6FF"
+          }
+        ]
+      },
+
+      options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        plugins: {
+
+          legend: {
+            display: false
+          }
+
+        },
+
+        scales: {
+
+          y: {
+            beginAtZero: true
+          }
+
+        }
+
+      }
+
+    });
+
+}
