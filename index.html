@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,6 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 
 <link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
@@ -21,11 +24,15 @@
 <div class="shell">
 
     <!-- SIDEBAR -->
+
     <aside class="sidebar">
 
         <div class="brand">
             <div class="brand-dot"></div>
-            <span>Transformation Jobs <em>AU</em></span>
+            <span>
+                Transformation Jobs
+                <em>AU</em>
+            </span>
         </div>
 
         <div class="live-pill">
@@ -33,119 +40,222 @@
             LIVE
         </div>
 
-        <nav class="filters">
+        <!-- ROLE FILTER -->
 
-            <p class="filter-label">ROLE CATEGORY</p>
+        <div class="filter-group">
 
-            <button class="chip active" data-type="keyword" data-val="">
+            <p class="filter-label">
+                ROLE
+            </p>
+
+            <button class="chip active"
+                data-type="role"
+                data-val="">
                 All Roles
             </button>
 
-            <button class="chip" data-type="keyword" data-val="transformation">
+            <button class="chip"
+                data-type="role"
+                data-val="transformation">
                 Transformation
             </button>
 
-            <button class="chip" data-type="keyword" data-val="business analyst">
-                Business Analysis
+            <button class="chip"
+                data-type="role"
+                data-val="business analyst">
+                Business Analyst
             </button>
 
-            <button class="chip" data-type="keyword" data-val="project manager">
-                Project Management
+            <button class="chip"
+                data-type="role"
+                data-val="project manager">
+                Project Manager
             </button>
 
-            <button class="chip" data-type="keyword" data-val="program manager">
-                Program Management
+            <button class="chip"
+                data-type="role"
+                data-val="program manager">
+                Program Manager
             </button>
 
-            <button class="chip" data-type="keyword" data-val="architect">
-                Architecture
+            <button class="chip"
+                data-type="role"
+                data-val="change manager">
+                Change Manager
             </button>
 
-            <button class="chip" data-type="keyword" data-val="strategy">
-                Strategy
+            <button class="chip"
+                data-type="role"
+                data-val="business architect">
+                Business Architect
             </button>
 
-            <button class="chip" data-type="keyword" data-val="ai">
+            <button class="chip"
+                data-type="role"
+                data-val="enterprise architect">
+                Enterprise Architect
+            </button>
+
+            <button class="chip"
+                data-type="role"
+                data-val="solution architect">
+                Solution Architect
+            </button>
+
+            <button class="chip"
+                data-type="role"
+                data-val="erp">
+                ERP
+            </button>
+
+            <button class="chip"
+                data-type="role"
+                data-val="workday">
+                Workday
+            </button>
+
+            <button class="chip"
+                data-type="role"
+                data-val="sap">
+                SAP
+            </button>
+
+            <button class="chip"
+                data-type="role"
+                data-val="ai">
                 AI & Digital
             </button>
 
-            <button class="chip" data-type="keyword" data-val="erp">
-                ERP & Enterprise Systems
-            </button>
+        </div>
 
-            <p class="filter-label sector-title">
+        <!-- SECTOR FILTER -->
+
+        <div class="filter-group">
+
+            <p class="filter-label">
                 SECTOR
             </p>
 
-            <button class="chip" data-type="sector" data-val="government">
+            <button class="chip"
+                data-type="sector"
+                data-val="">
+                All Sectors
+            </button>
+
+            <button class="chip"
+                data-type="sector"
+                data-val="government">
                 Government
             </button>
 
-            <button class="chip" data-type="sector" data-val="education">
+            <button class="chip"
+                data-type="sector"
+                data-val="education">
                 Higher Education
             </button>
 
-            <button class="chip" data-type="sector" data-val="health">
+            <button class="chip"
+                data-type="sector"
+                data-val="health">
                 Healthcare
             </button>
 
-            <button class="chip" data-type="sector" data-val="banking">
+            <button class="chip"
+                data-type="sector"
+                data-val="bank">
                 Banking
             </button>
 
-            <button class="chip" data-type="sector" data-val="utilities">
-                Utilities
-            </button>
-
-            <button class="chip" data-type="sector" data-val="technology">
+            <button class="chip"
+                data-type="sector"
+                data-val="technology">
                 Technology
             </button>
 
-            <button class="clear-btn" id="clearBtn">
-                ↺ Clear Filters
+            <button class="chip"
+                data-type="sector"
+                data-val="consulting">
+                Consulting
             </button>
 
-        </nav>
+        </div>
+
+        <button id="clearBtn"
+            class="clear-btn">
+            ↺ Clear Filters
+        </button>
 
         <div class="sidebar-footer">
-            Curated by Ruth Sequeira<br>
-            <span id="sidebarTime">--</span>
+
+            Curated by Ruth Sequeira
+
+            <br>
+
+            <span id="sidebarTime">
+                --
+            </span>
+
         </div>
 
     </aside>
 
     <!-- MAIN -->
+
     <main class="main">
 
         <!-- TOPBAR -->
+
         <header class="topbar">
 
             <div class="topbar-left">
-                <h1>Transformation Jobs Australia</h1>
+
+                <h1>
+                    Transformation Jobs Australia
+                </h1>
 
                 <p class="topbar-sub">
-                    Transformation • Strategy • Delivery • Architecture • AI
+                    Live Market Intelligence Dashboard
                 </p>
+
             </div>
 
-            <div class="topbar-controls">
+            <div class="topbar-right">
 
                 <select id="citySelect">
-                    <option value="Melbourne">Melbourne</option>
-                    <option value="Sydney">Sydney</option>
-                    <option value="Brisbane">Brisbane</option>
-                    <option value="Perth">Perth</option>
-                    <option value="Canberra">Canberra</option>
-                    <option value="Adelaide">Adelaide</option>
+
+                    <option value="">
+                        All Cities
+                    </option>
+
+                    <option value="Melbourne">
+                        Melbourne
+                    </option>
+
+                    <option value="Sydney">
+                        Sydney
+                    </option>
+
+                    <option value="Brisbane">
+                        Brisbane
+                    </option>
+
+                    <option value="Perth">
+                        Perth
+                    </option>
+
+                    <option value="Canberra">
+                        Canberra
+                    </option>
+
+                    <option value="Adelaide">
+                        Adelaide
+                    </option>
+
                 </select>
 
-                <button id="themeToggle">
-                    🌙
-                </button>
-
                 <input
-                    type="text"
                     id="searchInput"
+                    type="text"
                     placeholder="Search roles, companies, skills..."
                 >
 
@@ -153,62 +263,45 @@
 
         </header>
 
-        <!-- STATS -->
+        <!-- KPI ROW -->
+
         <section class="stats-row">
 
             <div class="stat-card">
-                <div class="stat-icon">📋</div>
-                <div>
-                    <div class="stat-num" id="totalJobs">—</div>
-                    <div class="stat-lbl">Total Roles</div>
-                </div>
+                <div class="stat-num" id="totalJobs">-</div>
+                <div class="stat-lbl">Jobs</div>
             </div>
 
             <div class="stat-card">
-                <div class="stat-icon">🔥</div>
-                <div>
-                    <div class="stat-num" id="newToday">—</div>
-                    <div class="stat-lbl">New Today</div>
-                </div>
+                <div class="stat-num" id="newToday">-</div>
+                <div class="stat-lbl">New Today</div>
             </div>
 
             <div class="stat-card">
-                <div class="stat-icon">💰</div>
-                <div>
-                    <div class="stat-num" id="avgSalary">—</div>
-                    <div class="stat-lbl">Avg Salary</div>
-                </div>
+                <div class="stat-num" id="avgSalary">-</div>
+                <div class="stat-lbl">Avg Salary</div>
             </div>
 
             <div class="stat-card">
-                <div class="stat-icon">📍</div>
-                <div>
-                    <div class="stat-num" id="topSource">—</div>
-                    <div class="stat-lbl">Top Source</div>
-                </div>
+                <div class="stat-num" id="topSector">-</div>
+                <div class="stat-lbl">Top Sector</div>
             </div>
 
             <div class="stat-card">
-                <div class="stat-icon">🕒</div>
-                <div>
-                    <div class="stat-num" id="lastUpdated">—</div>
-                    <div class="stat-lbl">Updated</div>
-                </div>
+                <div class="stat-num" id="lastUpdated">-</div>
+                <div class="stat-lbl">Updated</div>
             </div>
 
         </section>
 
         <!-- CHARTS -->
+
         <section class="charts-row">
 
             <div class="chart-card wide">
 
                 <div class="chart-title">
-                    📈 Market Trend
-                </div>
-
-                <div id="trendLoading" class="chart-loading">
-                    Loading market trends...
+                    Market Demand Trend
                 </div>
 
                 <canvas id="trendChart"></canvas>
@@ -218,83 +311,82 @@
             <div class="chart-card">
 
                 <div class="chart-title">
-                    🥧 Sector Breakdown
+                    Sector Breakdown
                 </div>
 
-                <canvas id="donutChart"></canvas>
+                <canvas id="sectorChart"></canvas>
+
+            </div>
+
+        </section>
+
+        <!-- COMPANY CHART -->
+
+        <section class="company-chart-row">
+
+            <div class="chart-card">
+
+                <div class="chart-title">
+                    Top Hiring Organisations
+                </div>
+
+                <canvas id="companyChart"></canvas>
 
             </div>
 
         </section>
 
         <!-- RESULT BAR -->
+
         <div class="result-bar">
 
             <span id="jobCount">
                 Loading jobs...
             </span>
 
-            <button id="refreshBtn" class="refresh-btn">
+            <button
+                id="refreshBtn"
+                class="refresh-btn">
+
                 ↻ Refresh
+
             </button>
 
         </div>
 
-        <!-- TABLE HEAD -->
-        <div class="table-head" id="tableHead">
+        <!-- JOB TABLE -->
+
+        <div class="table-head">
 
             <span>Role</span>
             <span>Company</span>
             <span>Salary</span>
+            <span>Location</span>
             <span>Posted</span>
-            <span>Source</span>
             <span></span>
 
         </div>
 
-        <!-- STATES -->
+        <div
+            id="loadingState"
+            class="state-box">
 
-        <div id="loadingState" class="state-box">
             Loading jobs...
+
         </div>
 
-        <div id="errorState" class="state-box hidden">
-            Unable to load jobs.
+        <div
+            id="noResultsState"
+            class="state-box hidden">
+
+            No jobs found.
+
         </div>
 
-        <div id="noResultsState" class="state-box hidden">
-            No matching roles found.
-        </div>
+        <section
+            id="jobsContainer">
 
-        <!-- JOBS -->
-        <section id="jobsContainer"></section>
-
-        <!-- ABOUT -->
-
-        <footer class="about-section">
-
-            <h3>About</h3>
-
-            <p>
-                Transformation Jobs Australia is a curated job board focused
-                on transformation, project and program delivery, business
-                analysis, architecture, strategy and AI opportunities
-                across Australia.
-            </p>
-
-            <p>
-                The site helps transformation professionals discover
-                relevant opportunities without searching multiple job boards.
-            </p>
-
-            <p>
-                <strong>
-                    Curated by Ruth Sequeira |
-                    Transformation & Program Delivery Professional
-                </strong>
-            </p>
-
-        </footer>
+        </section>
 
     </main>
 
