@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Transformation Jobs Australia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-dot"></div>
+            <span>Transformation Jobs <em>AU</em></span>
+        </div>
+
+        <div class="live-pill">
+            <span class="pulse"></span>
+            LIVE
+        </div>
+
+        <nav class="filters">
+
+            <p class="filter-label">ROLE CATEGORY</p>
+
+            <button class="chip active" data-type="keyword" data-val="">
+                All Roles
+            </button>
+
+            <button class="chip" data-type="keyword" data-val="transformation">
+                Transformation
+            </button>
+
+            <button class="chip" data-type="keyword" data-val="business analyst">
+                Business Analysis
+            </button>
+
+            <button class="chip" data-type="keyword" data-val="project manager">
+                Project Management
+            </button>
+
+            <button class="chip" data-type="keyword" data-val="program manager">
+                Program Management
+            </button>
+
+            <button class="chip" data-type="keyword" data-val="architect">
+                Architecture
+            </button>
+
+            <button class="chip" data-type="keyword" data-val="strategy">
+                Strategy
+            </button>
+
+            <button class="chip" data-type="keyword" data-val="ai">
+                AI & Digital
+            </button>
+
+            <button class="chip" data-type="keyword" data-val="erp">
+                ERP & Enterprise Systems
+            </button>
+
+            <p class="filter-label sector-title">
+                SECTOR
+            </p>
+
+            <button class="chip" data-type="sector" data-val="government">
+                Government
+            </button>
+
+            <button class="chip" data-type="sector" data-val="education">
+                Higher Education
+            </button>
+
+            <button class="chip" data-type="sector" data-val="health">
+                Healthcare
+            </button>
+
+            <button class="chip" data-type="sector" data-val="banking">
+                Banking
+            </button>
+
+            <button class="chip" data-type="sector" data-val="utilities">
+                Utilities
+            </button>
+
+            <button class="chip" data-type="sector" data-val="technology">
+                Technology
+            </button>
+
+            <button class="clear-btn" id="clearBtn">
+                ↺ Clear Filters
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            Curated by Ruth Sequeira<br>
+            <span id="sidebarTime">--</span>
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <h1>Transformation Jobs Australia</h1>
+
+                <p class="topbar-sub">
+                    Transformation • Strategy • Delivery • Architecture • AI
+                </p>
+            </div>
+
+            <div class="topbar-controls">
+
+                <select id="citySelect">
+                    <option value="Melbourne">Melbourne</option>
+                    <option value="Sydney">Sydney</option>
+                    <option value="Brisbane">Brisbane</option>
+                    <option value="Perth">Perth</option>
+                    <option value="Canberra">Canberra</option>
+                    <option value="Adelaide">Adelaide</option>
+                </select>
+
+                <button id="themeToggle">
+                    🌙
+                </button>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search roles, companies, skills..."
+                >
+
+            </div>
+
+        </header>
+
+        <!-- STATS -->
+        <section class="stats-row">
+
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <div>
+                    <div class="stat-num" id="totalJobs">—</div>
+                    <div class="stat-lbl">Total Roles</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🔥</div>
+                <div>
+                    <div class="stat-num" id="newToday">—</div>
+                    <div class="stat-lbl">New Today</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div>
+                    <div class="stat-num" id="avgSalary">—</div>
+                    <div class="stat-lbl">Avg Salary</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📍</div>
+                <div>
+                    <div class="stat-num" id="topSource">—</div>
+                    <div class="stat-lbl">Top Source</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🕒</div>
+                <div>
+                    <div class="stat-num" id="lastUpdated">—</div>
+                    <div class="stat-lbl">Updated</div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CHARTS -->
+        <section class="charts-row">
+
+            <div class="chart-card wide">
+
+                <div class="chart-title">
+                    📈 Market Trend
+                </div>
+
+                <div id="trendLoading" class="chart-loading">
+                    Loading market trends...
+                </div>
+
+                <canvas id="trendChart"></canvas>
+
+            </div>
+
+            <div class="chart-card">
+
+                <div class="chart-title">
+                    🥧 Sector Breakdown
+                </div>
+
+                <canvas id="donutChart"></canvas>
+
+            </div>
+
+        </section>
+
+        <!-- RESULT BAR -->
+        <div class="result-bar">
+
+            <span id="jobCount">
+                Loading jobs...
+            </span>
+
+            <button id="refreshBtn" class="refresh-btn">
+                ↻ Refresh
+            </button>
+
+        </div>
+
+        <!-- TABLE HEAD -->
+        <div class="table-head" id="tableHead">
+
+            <span>Role</span>
+            <span>Company</span>
+            <span>Salary</span>
+            <span>Posted</span>
+            <span>Source</span>
+            <span></span>
+
+        </div>
+
+        <!-- STATES -->
+
+        <div id="loadingState" class="state-box">
+            Loading jobs...
+        </div>
+
+        <div id="errorState" class="state-box hidden">
+            Unable to load jobs.
+        </div>
+
+        <div id="noResultsState" class="state-box hidden">
+            No matching roles found.
+        </div>
+
+        <!-- JOBS -->
+        <section id="jobsContainer"></section>
+
+        <!-- ABOUT -->
+
+        <footer class="about-section">
+
+            <h3>About</h3>
+
+            <p>
+                Transformation Jobs Australia is a curated job board focused
+                on transformation, project and program delivery, business
+                analysis, architecture, strategy and AI opportunities
+                across Australia.
+            </p>
+
+            <p>
+                The site helps transformation professionals discover
+                relevant opportunities without searching multiple job boards.
+            </p>
+
+            <p>
+                <strong>
+                    Curated by Ruth Sequeira |
+                    Transformation & Program Delivery Professional
+                </strong>
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
