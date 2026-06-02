@@ -1,31 +1,3 @@
-const APP_ID = "45773940";
-const API_KEY = "19373b4fdefafdc7dbe4a625f0910e2d";
-
-let allJobs = [];
-let filteredJobs = [];
-
-let activeRole = "";
-let activeSector = "";
-let activeCity = "";
-let searchTerm = "";
-
-let trendChart;
-let sectorChart;
-let companyChart;
-
-const $ = id => document.getElementById(id);
-
-document.addEventListener("DOMContentLoaded", init);
-
-async function init() {
-  registerFilters();
-  registerSearch();
-  registerCityFilter();
-  registerRefresh();
-  registerClearFilters();
-  startClock();
-  await fetchJobs();
-}
 /* =====================================================
    TRANSFORMATION JOBS AUSTRALIA
    LIVE ADZUNA VERSION
